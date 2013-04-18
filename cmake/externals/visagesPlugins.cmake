@@ -20,6 +20,7 @@ function(visagesPlugins_project)
     
     if (${CMAKE_HOST_UNIX} AND ${CMAKE_SYSTEM_PROCESSOR} MATCHES x86_64|amd64)    
         set(ep_common_cxx_flags "${ep_common_cxx_flags} -fPIC")
+        set(ep_common_c_flags "${ep_common_c_flags} -fPIC")        
     endif()
     
     SetExternalProjectsDirs(visagesPlugins ep_build_dirs)
@@ -32,6 +33,7 @@ function(visagesPlugins_project)
         CMAKE_CACHE_ARGS
             ${ep_common_cache_args}
             -DCMAKE_CXX_FLAGS:STRING=${ep_common_cxx_flags}
+            -DCMAKE_C_FLAGS:STRING=${ep_common_c_flags}            
             -DBUILD_TESTING:BOOL=${visagesPluginsp_TESTING}
             -DQT_QMAKE_EXECUTABLE:FILEPATH=${QT_QMAKE_EXECUTABLE}
             -Ddtk_DIR:FILEPATH=${dtk_DIR}

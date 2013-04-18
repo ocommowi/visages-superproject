@@ -37,7 +37,9 @@ foreach (package ${packages})
 	endforeach()
 endforeach()
 
-if (${GFORGE_USERNAME} STREQUAL "")
-    message(SEND_ERROR "GFORGE_USERNAME is empty !\n\nYou must provide a valid username account in order to have ssh access to gforge.inria.fr\nThis is required by Anima and Vistal.\nPlease contact olivier.commowick@irisa.fr for more details")
+if (
+
+"${GFORGE_USERNAME}" STREQUAL "")
+    message(WARNING "GFORGE_USERNAME is empty !\n\nYou must provide a valid username account in order to have ssh access to gforge.inria.fr\nThis is required by Anima and Vistal.\nPlease contact olivier.commowick@irisa.fr for more details")
 endif()
 

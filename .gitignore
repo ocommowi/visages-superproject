@@ -11,3 +11,21 @@
 *.lai
 *.la
 *.a
+
+# CMake and make stuff 
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
+install_manifest.txt
+rules.ninja
+build.ninja
+
+
+# externals src 
+visagesPlugin
+vistal
+qtShanoir
+animaMath
+animaRegistration
+animaFiltering

@@ -17,7 +17,8 @@ function(qtShanoir_project)
     if (NOT DEFINED location)
         set(location GIT_REPOSITORY "git://scm.gforge.inria.fr/qtshanoir/qtshanoir.git")
     endif()
-    
+
+    # -fPIC is need with static lib for gcc on amd64 plateform.    
     if (${CMAKE_HOST_UNIX} AND ${CMAKE_SYSTEM_PROCESSOR} MATCHES x86_64|amd64)    
         set(ep_common_cxx_flags "${ep_common_cxx_flags} -fPIC")
         set(ep_common_c_flags "${ep_common_c_flags} -fPIC")

@@ -18,6 +18,7 @@ function(vistal_project)
         set(location SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/vistal/trunk/Vistal")
     endif()
     
+    # -fPIC is need with static lib for gcc on amd64 plateform.
     if (${CMAKE_HOST_UNIX} AND ${CMAKE_SYSTEM_PROCESSOR} MATCHES x86_64|amd64)    
         set(ep_common_cxx_flags "${ep_common_cxx_flags} -fPIC")
         set(ep_common_c_flags "${ep_common_c_flags} -fPIC")        

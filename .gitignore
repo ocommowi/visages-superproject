@@ -23,7 +23,7 @@ build.ninja
 
 
 # externals src 
-visagesPlugin
+visagesPlugins
 vistal
 qtShanoir
 animaMath

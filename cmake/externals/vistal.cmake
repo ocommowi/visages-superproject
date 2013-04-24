@@ -14,7 +14,7 @@ function(vistal_project)
         set(vistalp_TESTING ON)
     endif()
 
-    if (NOT DEFINED location)
+    if (NOT DEFINED vistal_SOURCE_DIR)
         set(location SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/vistal/trunk/Vistal")
     endif()
     

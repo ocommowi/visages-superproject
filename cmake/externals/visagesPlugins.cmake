@@ -14,7 +14,7 @@ function(visagesPlugins_project)
         set(visagesPluginsp_TESTING ON)
     endif()
 
-    if (NOT DEFINED location)
+    if (NOT DEFINED visagesPlugins_SOURCE_DIR)
         set(location GIT_REPOSITORY "git@github.com:medInria/medInria-visages.git")
     endif()
     

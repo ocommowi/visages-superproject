@@ -14,7 +14,7 @@ function(animaMath_project)
         set(animaMathp_TESTING ON)
     endif()
 
-    if (NOT DEFINED location)
+    if (NOT DEFINED animaMath_SOURCE_DIR)
         set(location SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-maths/trunk")
     endif()
 

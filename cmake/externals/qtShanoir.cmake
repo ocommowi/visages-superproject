@@ -14,7 +14,7 @@ function(qtShanoir_project)
         set(qtShanoirp_TESTING ON)
     endif()
 
-    if (NOT DEFINED location)
+    if (NOT DEFINED qtShanoir_SOURCE_DIR)
         set(location GIT_REPOSITORY "git://scm.gforge.inria.fr/qtshanoir/qtshanoir.git")
     endif()
 

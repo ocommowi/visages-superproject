@@ -14,7 +14,7 @@ function(animaRegistration_project)
         set(animaRegistrationp_TESTING ON)
     endif()
 
-    if (NOT DEFINED location)
+    if (NOT DEFINED animaRegistration_SOURCE_DIR)
         set(location SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-reg/trunk")
     endif()
 

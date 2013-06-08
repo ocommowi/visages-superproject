@@ -1,7 +1,7 @@
-function(anima_math)
+function(animaMath_project)
 
-set(ep_name anima_math)
-set(EP_NAME ANIMA_MATH)
+set(ep_name animaMath)
+set(EP_NAME animaMath)
 
 ## #############################################################################
 ## List the dependencies of the project
@@ -42,7 +42,7 @@ EP_SetDirectories(${ep_name}
 
 if (NOT DEFINED ${EP_NAME}_SOURCE_DIR)
   set(location 
-    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-maths/trunk
+    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-maths/trunk"
   )
 endif()
 
@@ -64,7 +64,6 @@ set(cmake_args
   -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
   -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep_name}}
   -DITK_DIR:FILEPATH=${ITK_DIR}
-  -DVTK_DIR:FILEPATH=${VTK_DIR}
   )
 
 ## #############################################################################
@@ -85,8 +84,8 @@ ExternalProject_Add(${ep_name}
 ## Set variable to provide infos about the project
 ## #############################################################################
 
-ExternalProject_Get_Property(${ep_name} install_dir)
-set(${EP_NAME}_DIR ${install_dir} PARENT_SCOPE)
+ExternalProject_Get_Property(${ep_name} binary_dir)
+set(${EP_NAME}_DIR ${binary_dir} PARENT_SCOPE)
 
 endif()
 

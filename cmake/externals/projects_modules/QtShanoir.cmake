@@ -1,15 +1,14 @@
 function(QtShanoir_project)
 
 set(ep_name QtShanoir)
-set(EP_NAME QTSHANOIR)
+set(EP_NAME QtShanoir)
 
 ## #############################################################################
 ## List the dependencies of the project
 ## #############################################################################
 
 list(APPEND ${ep_name}_dependencies 
-  anima_math
-  anima_filtering
+  ""
   )
   
   
@@ -83,8 +82,8 @@ ExternalProject_Add(${ep_name}
 ## Set variable to provide infos about the project
 ## #############################################################################
 
-ExternalProject_Get_Property(${ep_name} install_dir)
-set(${EP_NAME}_DIR ${install_dir} PARENT_SCOPE)
+ExternalProject_Get_Property(${ep_name} binary_dir)
+set(${EP_NAME}_DIR ${binary_dir} PARENT_SCOPE)
 
 endif()
 

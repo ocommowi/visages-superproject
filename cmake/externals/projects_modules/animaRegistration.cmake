@@ -1,17 +1,15 @@
-function(visages_plugins_project)
+function(animaRegistration_project)
 
-set(ep_name visages_plugins)
-set(EP_NAME VISAGES_PLUGINS)
+set(ep_name animaRegistration)
+set(EP_NAME animaRegistration)
 
 ## #############################################################################
 ## List the dependencies of the project
 ## #############################################################################
 
 list(APPEND ${ep_name}_dependencies 
-  anima_math
-  anima_filtering
-  anima_registration
-  QtShanoir
+  animaMath
+  animaFiltering
   )
   
   
@@ -44,7 +42,7 @@ EP_SetDirectories(${ep_name}
 
 if (NOT DEFINED ${EP_NAME}_SOURCE_DIR)
   set(location 
-    GIT_REPOSITORY "git@github.com:medInria/medInria-visages.git
+    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-reg/trunk"
   )
 endif()
 
@@ -65,15 +63,11 @@ set(cmake_args
   -DCMAKE_CXX_FLAGS:STRING=${${ep_name}_cxx_flags}  
   -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
   -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep_name}}
-  -DQT_QMAKE_EXECUTABLE:FILEPATH=${QT_QMAKE_EXECUTABLE}
-  -Ddtk_DIR:FILEPATH=${dtk_DIR}
+  -DUSE_RPI:BOOL=ON
+  -DRPI_DIR:FILEPATH=${RPI_DIR}
   -DITK_DIR:FILEPATH=${ITK_DIR}
-  -DVTK_DIR:FILEPATH=${VTK_DIR}
-  -DmedInria_DIR:FILEPATH=${MEDINRIA_DIR}
-  -DANIMA-MATHS_DIR:FILEPATH=${ANIMA_MATH_DIR}
-  -DANIMA-FILTERING_DIR:FILEPATH=${ANIMA_FILTERING_DIR}
-  -DANIMA-REGISTRATION_DIR:FILEPATH=${ANIMA_REGISTRATION_DIR}
-  -DQTSHANOIR_DIR:FILEPATH=${QTSHANOIR_DIR}
+  -DANIMA-MATHS_DIR:FILEPATH=${animaMath_DIR}
+  -DANIMA-FILTERING_DIR:FILEPATH=${animaFiltering_DIR}
   )
 
 ## #############################################################################
@@ -94,8 +88,8 @@ ExternalProject_Add(${ep_name}
 ## Set variable to provide infos about the project
 ## #############################################################################
 
-ExternalProject_Get_Property(${ep_name} install_dir)
-set(${EP_NAME}_DIR ${install_dir} PARENT_SCOPE)
+ExternalProject_Get_Property(${ep_name} binary_dir)
+set(${EP_NAME}_DIR ${binary_dir} PARENT_SCOPE)
 
 endif()
 

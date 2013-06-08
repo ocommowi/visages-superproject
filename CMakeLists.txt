@@ -7,11 +7,11 @@ project(visages-superProject)
 ## #############################################################################
 
 list(APPEND external_projects  
-  anima_math 
-  anima_filtering 
-  anima_registration
+  animaMath 
+  animaFiltering 
+  animaRegistration
   QtShanoir  
-  visages_plugins
+  visagesPlugins
   )
 
 
@@ -42,7 +42,7 @@ endif()
 set(GFORGE_USERNAME "" CACHE STRING 
   "Username of your gforge account used to run svn+ssh.")
 
-"${GFORGE_USERNAME}" STREQUAL "")
+if("${GFORGE_USERNAME}" STREQUAL "")
     message(WARNING 
     "GFORGE_USERNAME is empty !
     
@@ -78,7 +78,6 @@ endforeach()
 ## #############################################################################
 
 find_package(medInria-superProject REQUIRED)
-include(ExternalProjects)
 
 ## #############################################################################
 ## Configure external-projects

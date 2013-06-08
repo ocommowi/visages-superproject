@@ -1,14 +1,15 @@
-function(anima_filtering_project)
 
-set(ep_name anima_filtering)
-set(EP_NAME ANIMA_FILTERING)
+function(animaFiltering_project)
+
+set(ep_name animaFiltering)
+set(EP_NAME animaFiltering)
 
 ## #############################################################################
 ## List the dependencies of the project
 ## #############################################################################
 
 list(APPEND ${ep_name}_dependencies 
-  anima_math
+  animaMath
   )
   
   
@@ -31,7 +32,7 @@ if (NOT USE_SYSTEM_${ep_name})
 
 EP_SetDirectories(${ep_name}
   CMAKE_VAR_EP_NAME ${EP_NAME}
-  ep_build_dirs
+  ep_dirs
   )
 
 
@@ -41,7 +42,7 @@ EP_SetDirectories(${ep_name}
 
 if (NOT DEFINED ${EP_NAME}_SOURCE_DIR)
   set(location 
-    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-filters/trunk
+    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-filters/trunk"
   )
 endif()
 
@@ -64,7 +65,7 @@ set(cmake_args
   -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep_name}}
   -DITK_DIR:FILEPATH=${ITK_DIR}
   -DVTK_DIR:FILEPATH=${VTK_DIR}
-  -DANIMA-MATHS_DIR:FILEPATH=${ANIMA_MATH_DIR}
+  -DANIMA-MATHS_DIR:FILEPATH=${animaMath_DIR}
   )
 
 ## #############################################################################
@@ -72,7 +73,7 @@ set(cmake_args
 ## #############################################################################
 
 ExternalProject_Add(${ep_name}
-  ${ep__dirs}
+  ${ep_dirs}
   ${location}
   CMAKE_GENERATOR ${gen}
   CMAKE_ARGS ${cmake_args}
@@ -85,8 +86,8 @@ ExternalProject_Add(${ep_name}
 ## Set variable to provide infos about the project
 ## #############################################################################
 
-ExternalProject_Get_Property(${ep_name} install_dir)
-set(${EP_NAME}_DIR ${install_dir} PARENT_SCOPE)
+ExternalProject_Get_Property(${ep_name} binary_dir)
+set(${EP_NAME}_DIR ${binary_dir} PARENT_SCOPE)
 
 endif()
 

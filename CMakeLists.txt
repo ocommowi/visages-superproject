@@ -20,7 +20,7 @@ include(ExternalProjects)
 include(CheckEnvironment)
 set(GFORGE_USERNAME "" CACHE STRING "Username of your gforge account used to run svn+ssh.")
 
-set(packages qtShanoir animaMath animaFiltering animaRegistration vistal visagesPlugins)
+set(packages qtShanoir animaMath animaFiltering animaRegistration visagesPlugins)
 
 # This adds global targets that run this step in every subproject
 set(global_targets configure update build install)

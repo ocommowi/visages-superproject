@@ -37,8 +37,12 @@ function(visagesPlugins_project)
             -DQTSHANOIR_DIR:FILEPATH=${qtShanoir_DIR}
             -DANIMA-MATHS_DIR:FILEPATH=${animaMath_DIR}
             -DANIMA-FILTERING_DIR:FILEPATH=${animaFiltering_DIR}
-            -DANIMA-REGISTRATION_DIR:FILEPATH=${animaRegistration_DIR}            
-        DEPENDS qtShanoir vistal animaMath animaFiltering animaRegistration
+            -DANIMA-REGISTRATION_DIR:FILEPATH=${animaRegistration_DIR}
+	    -DMEDINRIA_BUILD_VISTALDATAIMAGE_PLUGIN:BOOL=OFF
+            -DMEDINRIA_BUILD_VISTALDATAIMAGEREADER_PLUGIN:BOOL=OFF
+            -DMEDINRIA_BUILD_VISTALDATAIMAGEWRITER_PLUGIN:BOOL=OFF
+            -DMEDINRIA_BUILD_VISTALDATAIMAGECONVERTER_PLUGIN:BOOL=OFF
+        DEPENDS qtShanoir animaMath animaFiltering animaRegistration
     )
     ExternalForceBuild(visagesPlugins)
     

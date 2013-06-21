@@ -62,6 +62,7 @@ set(cmake_args
   -DCMAKE_CXX_FLAGS:STRING=${${ep_name}_cxx_flags}  
   -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
   -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep_name}}
+  -DQT_QMAKE_EXECUTABLE:PATH=${QT_QMAKE_EXECUTABLE}
   )
 
 ## #############################################################################

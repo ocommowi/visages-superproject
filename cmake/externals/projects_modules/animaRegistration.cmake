@@ -1,13 +1,12 @@
 function(animaRegistration_project)
 
-set(ep_name animaRegistration)
-set(EP_NAME animaRegistration)
+set(ep animaRegistration)
 
 ## #############################################################################
 ## List the dependencies of the project
 ## #############################################################################
 
-list(APPEND ${ep_name}_dependencies 
+list(APPEND ${ep}_dependencies 
   animaMath
   animaFiltering
   )
@@ -17,22 +16,20 @@ list(APPEND ${ep_name}_dependencies
 ## Prepare the project
 ## ############################################################################# 
 
-EP_Initialisation(${ep_name}  
-  CMAKE_VAR_EP_NAME ${EP_NAME}
+EP_Initialisation(${ep}  
   USE_SYSTEM OFF 
   BUILD_SHARED_LIBS OFF
   REQUIERD_FOR_PLUGINS OFF
   )
 
 
-if (NOT USE_SYSTEM_${ep_name})
+if (NOT USE_SYSTEM_${ep})
 ## #############################################################################
 ## Set directories
 ## #############################################################################
 
-EP_SetDirectories(${ep_name}
-  CMAKE_VAR_EP_NAME ${EP_NAME}
-  ep_dirs
+EP_SetDirectories(${ep}
+  EP_DIRECTORIES ep_dirs
   )
 
 
@@ -40,7 +37,7 @@ EP_SetDirectories(${ep_name}
 ## Define repository where get the sources
 ## #############################################################################
 
-if (NOT DEFINED ${EP_NAME}_SOURCE_DIR)
+if (NOT DEFINED ${ep}_SOURCE_DIR)
   set(location 
     SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-reg/trunk"
   )
@@ -53,16 +50,16 @@ endif()
 
 # set compilation flags
 if (UNIX)
-  set(${ep_name}_c_flags "${${ep_name}_c_flags} -Wall")
-  set(${ep_name}_cxx_flags "${${ep_name}_cxx_flags} -Wall")
+  set(${ep}_c_flags "${${ep}_c_flags} -Wall")
+  set(${ep}_cxx_flags "${${ep}_cxx_flags} -Wall")
 endif()
 
 set(cmake_args
   ${ep_common_cache_args}
-  -DCMAKE_C_FLAGS:STRING=${${ep_name}_c_flags}
-  -DCMAKE_CXX_FLAGS:STRING=${${ep_name}_cxx_flags}  
+  -DCMAKE_C_FLAGS:STRING=${${ep}_c_flags}
+  -DCMAKE_CXX_FLAGS:STRING=${${ep}_cxx_flags}  
   -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
-  -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep_name}}
+  -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep}}
   -DBUILD_TOOLS:BOOL=OFF
   -DUSE_RPI:BOOL=ON
   -DRPI_DIR:FILEPATH=${RPI_DIR}
@@ -75,12 +72,12 @@ set(cmake_args
 ## Add external-project
 ## #############################################################################
 
-ExternalProject_Add(${ep_name}
+ExternalProject_Add(${ep}
   ${ep_dirs}
   ${location}
   CMAKE_GENERATOR ${gen}
   CMAKE_ARGS ${cmake_args}
-  DEPENDS ${${ep_name}_dependencies}
+  DEPENDS ${${ep}_dependencies}
   INSTALL_COMMAND ""  
   )
 
@@ -89,8 +86,8 @@ ExternalProject_Add(${ep_name}
 ## Set variable to provide infos about the project
 ## #############################################################################
 
-ExternalProject_Get_Property(${ep_name} binary_dir)
-set(${EP_NAME}_DIR ${binary_dir} PARENT_SCOPE)
+ExternalProject_Get_Property(${ep} binary_dir)
+set(${ep}_DIR ${binary_dir} PARENT_SCOPE)
 
 endif()
 

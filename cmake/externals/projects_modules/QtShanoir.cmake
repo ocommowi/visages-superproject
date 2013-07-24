@@ -38,7 +38,7 @@ EP_SetDirectories(${ep}
 
 if (NOT DEFINED ${ep}_SOURCE_DIR)
   set(location 
-    GIT_REPOSITORY "git://scm.gforge.inria.fr/qtshanoir/qtshanoir.git"
+    GIT_REPOSITORY "git://scm.gforge.inria.fr/qtshanoir/qtshanoir.git" GIT_TAG 0467b7758eb4a4325dfd3268ae29b2b7645c7d86
   )
 endif()
 

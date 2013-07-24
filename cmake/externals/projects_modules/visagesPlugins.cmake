@@ -41,7 +41,7 @@ EP_SetDirectories(${ep}
 
 if (NOT DEFINED ${ep}_SOURCE_DIR)
   set(location 
-    GIT_REPOSITORY "git@github.com:medInria/medInria-visages.git"
+    GIT_REPOSITORY "git@github.com:medInria/medInria-visages.git" GIT_TAG 2f1b7f4849d51a08da9e7e388bc2e69bfd639106
   )
 endif()
 

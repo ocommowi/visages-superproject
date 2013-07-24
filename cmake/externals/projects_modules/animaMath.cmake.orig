@@ -1,6 +1,6 @@
-function(QtShanoir_project)
+function(animaMath_project)
 
-set(ep QtShanoir)
+set(ep animaMath)
 
 ## #############################################################################
 ## List the dependencies of the project
@@ -14,6 +14,7 @@ list(APPEND ${ep}_dependencies
 ## #############################################################################
 ## Prepare the project
 ## ############################################################################# 
+
 
 EP_Initialisation(${ep}  
   USE_SYSTEM OFF 
@@ -36,10 +37,16 @@ EP_SetDirectories(${ep}
 ## Define repository where get the sources
 ## #############################################################################
 
-set(url git://scm.gforge.inria.fr/qtshanoir/qtshanoir.git)
-set(tag 0467b7758eb4a4325dfd3268ae29b2b7645c7d86)
+set(url svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-maths/trunk)
+set(tag 110)
 if (NOT DEFINED ${ep}_SOURCE_DIR)
-  set(location GIT_REPOSITORY ${url} GIT_TAG ${tag})
+<<<<<<< HEAD
+  set(location SVN_REPOSITORY ${url}@${tag})
+=======
+  set(location 
+    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-maths/trunk@115"
+  )
+>>>>>>> Move anima to revisions just before v2.1.0 branches creations
 endif()
 
 
@@ -59,7 +66,8 @@ set(cmake_args
   -DCMAKE_CXX_FLAGS:STRING=${${ep}_cxx_flags}  
   -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
   -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep}}
-  -DQT_QMAKE_EXECUTABLE:PATH=${QT_QMAKE_EXECUTABLE}
+  -DBUILD_TOOLS:BOOL=OFF
+  -DITK_DIR:FILEPATH=${ITK_DIR}
   )
 
 ## #############################################################################

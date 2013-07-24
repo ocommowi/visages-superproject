@@ -1,13 +1,16 @@
-function(QtShanoir_project)
+function(visagesPlugins_project)
 
-set(ep QtShanoir)
+set(ep visagesPlugins)
 
 ## #############################################################################
 ## List the dependencies of the project
 ## #############################################################################
 
 list(APPEND ${ep}_dependencies 
-  ""
+  animaMath
+  animaFiltering
+  animaRegistration
+  QtShanoir
   )
   
   
@@ -17,7 +20,7 @@ list(APPEND ${ep}_dependencies
 
 EP_Initialisation(${ep}  
   USE_SYSTEM OFF 
-  BUILD_SHARED_LIBS OFF
+  BUILD_SHARED_LIBS ON
   REQUIERD_FOR_PLUGINS OFF
   )
 
@@ -36,10 +39,15 @@ EP_SetDirectories(${ep}
 ## Define repository where get the sources
 ## #############################################################################
 
-set(url git://scm.gforge.inria.fr/qtshanoir/qtshanoir.git)
-set(tag 0467b7758eb4a4325dfd3268ae29b2b7645c7d86)
+set(url ${GITHUB_PREFIX}medInria/medInria-visages.git)
 if (NOT DEFINED ${ep}_SOURCE_DIR)
-  set(location GIT_REPOSITORY ${url} GIT_TAG ${tag})
+<<<<<<< HEAD
+  set(location GIT_REPOSITORY ${url})
+=======
+  set(location 
+    GIT_REPOSITORY "git@github.com:medInria/medInria-visages.git" GIT_TAG 2f1b7f4849d51a08da9e7e388bc2e69bfd639106
+  )
+>>>>>>> Forcing subprojects versions for release
 endif()
 
 
@@ -60,6 +68,15 @@ set(cmake_args
   -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
   -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep}}
   -DQT_QMAKE_EXECUTABLE:PATH=${QT_QMAKE_EXECUTABLE}
+  -Ddtk_DIR:FILEPATH=${dtk_DIR}
+  -DITK_DIR:FILEPATH=${ITK_DIR}
+  -DVTK_DIR:FILEPATH=${VTK_DIR}
+  -DRPI_DIR:FILEPATH=${RPI_DIR}
+  -DmedInria_DIR:FILEPATH=${medInria_DIR}
+  -DANIMA-MATHS_DIR:FILEPATH=${animaMath_DIR}
+  -DANIMA-FILTERING_DIR:FILEPATH=${animaFiltering_DIR}
+  -DANIMA-REGISTRATION_DIR:FILEPATH=${animaRegistration_DIR}
+  -DQTSHANOIR_DIR:FILEPATH=${QtShanoir_DIR}
   )
 
 ## #############################################################################

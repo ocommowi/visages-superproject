@@ -38,7 +38,7 @@ EP_SetDirectories(${ep}
 ## #############################################################################
 
 set(url svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-maths/trunk)
-set(tag 110)
+set(tag 117)
 if (NOT DEFINED ${ep}_SOURCE_DIR)
   set(location SVN_REPOSITORY ${url}@${tag})
 endif()

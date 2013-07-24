@@ -39,7 +39,7 @@ EP_SetDirectories(${ep}
 
 if (NOT DEFINED ${ep}_SOURCE_DIR)
   set(location 
-    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-filters/trunk@81"
+    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-filters/trunk@82"
   )
 endif()
 

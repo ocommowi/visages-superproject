@@ -38,8 +38,9 @@ EP_SetDirectories(${ep}
 ## #############################################################################
 
 set (url svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-filters/trunk)
+set (tag 81)
 if (NOT DEFINED ${ep}_SOURCE_DIR)
-  set(location SVN_REPOSITORY ${url})
+  set(location SVN_REPOSITORY ${url}@${tag})
 endif()
 
 
@@ -72,7 +73,6 @@ set(cmake_args
 ExternalProject_Add(${ep}
   ${ep_dirs}
   ${location}
-  UPDATE_COMMAND ""
   CMAKE_GENERATOR ${gen}
   CMAKE_ARGS ${cmake_args}
   DEPENDS ${${ep}_dependencies}
@@ -85,6 +85,7 @@ ExternalProject_Add(${ep}
 ## #############################################################################
 
 EP_AddCustomTargets(${ep})
+
 
 ## #############################################################################
 ## Set variable to provide infos about the project

@@ -38,14 +38,15 @@ EP_SetDirectories(${ep}
 ## #############################################################################
 
 set(url svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-reg/trunk)
+set(tag 75)
 if (NOT DEFINED ${ep}_SOURCE_DIR)
 <<<<<<< HEAD
-  set(location SVN_REPOSITORY ${url})
+  set(location SVN_REPOSITORY ${url}@${tag})
 =======
   set(location 
-    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-reg/trunk@71"
+    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-reg/branches/medInria-2.1.0@75"
   )
->>>>>>> Forcing subprojects versions for release
+>>>>>>> commit after rebase -i to remove (Forcing checkout...)
 endif()
 
 

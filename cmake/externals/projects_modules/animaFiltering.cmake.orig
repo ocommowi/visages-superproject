@@ -38,15 +38,15 @@ EP_SetDirectories(${ep}
 ## #############################################################################
 
 set (url svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-filters/trunk)
-set (tag 81)
+set (tag 84)
 if (NOT DEFINED ${ep}_SOURCE_DIR)
 <<<<<<< HEAD
   set(location SVN_REPOSITORY ${url}@${tag})
 =======
   set(location 
-    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-filters/trunk@82"
+    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-filters/branches/medInria-2.1.0@84"
   )
->>>>>>> Move anima to revisions just before v2.1.0 branches creations
+>>>>>>> commit after rebase -i to remove (Forcing checkout...)
 endif()
 
 

@@ -38,15 +38,15 @@ EP_SetDirectories(${ep}
 ## #############################################################################
 
 set(url svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-maths/trunk)
-set(tag 110)
+set(tag 117)
 if (NOT DEFINED ${ep}_SOURCE_DIR)
 <<<<<<< HEAD
   set(location SVN_REPOSITORY ${url}@${tag})
 =======
   set(location 
-    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-maths/trunk@115"
+    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-maths/branches/medInria-2.1.0@117"
   )
->>>>>>> Move anima to revisions just before v2.1.0 branches creations
+>>>>>>> commit after rebase -i to remove (Forcing checkout...)
 endif()
 
 

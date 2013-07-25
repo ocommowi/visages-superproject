@@ -39,7 +39,7 @@ EP_SetDirectories(${ep}
 
 if (NOT DEFINED ${ep}_SOURCE_DIR)
   set(location 
-    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-maths/trunk@115"
+    SVN_REPOSITORY "svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-maths/branches/medInria-2.1.0@117"
   )
 endif()
 

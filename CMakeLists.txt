@@ -60,8 +60,6 @@ endif()
 
 set(global_targets 
   configure 
-  update
-  build 
   install
   )
   

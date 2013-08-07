@@ -36,10 +36,9 @@ EP_SetDirectories(${ep}
 ## Define repository where get the sources
 ## #############################################################################
 
+set(url git://scm.gforge.inria.fr/qtshanoir/qtshanoir.git)
 if (NOT DEFINED ${ep}_SOURCE_DIR)
-  set(location 
-    GIT_REPOSITORY "git://scm.gforge.inria.fr/qtshanoir/qtshanoir.git"
-  )
+  set(location GIT_REPOSITORY ${url})
 endif()
 
 
@@ -74,6 +73,13 @@ ExternalProject_Add(${ep}
   DEPENDS ${${ep}_dependencies}
   INSTALL_COMMAND ""  
   )
+
+
+## #############################################################################
+## Add custom targets
+## #############################################################################
+
+EP_AddCustomTargets(${ep})
 
 
 ## #############################################################################

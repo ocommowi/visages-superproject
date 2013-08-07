@@ -39,10 +39,9 @@ EP_SetDirectories(${ep}
 ## Define repository where get the sources
 ## #############################################################################
 
+set(url ${GITHUB_PREFIX}medInria/medInria-visages.git)
 if (NOT DEFINED ${ep}_SOURCE_DIR)
-  set(location 
-    GIT_REPOSITORY "git@github.com:medInria/medInria-visages.git"
-  )
+  set(location GIT_REPOSITORY ${url})
 endif()
 
 
@@ -86,6 +85,13 @@ ExternalProject_Add(${ep}
   DEPENDS ${${ep}_dependencies}
   INSTALL_COMMAND ""  
   )
+
+
+## #############################################################################
+## Add custom targets
+## #############################################################################
+
+EP_AddCustomTargets(${ep})
 
 
 ## #############################################################################

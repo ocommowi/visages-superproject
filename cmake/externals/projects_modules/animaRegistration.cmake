@@ -37,7 +37,7 @@ EP_SetDirectories(${ep}
 ## Define repository where get the sources
 ## #############################################################################
 
-set(url svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-reg/trunk)
+set(url svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-reg/branches/itk-4)
 if (NOT DEFINED ${ep}_SOURCE_DIR)
   set(location SVN_REPOSITORY ${url})
 endif()

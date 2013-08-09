@@ -41,9 +41,8 @@ EP_SetDirectories(${ep}
 
 set(url ${GITHUB_PREFIX}medInria/medInria-visages.git)
 if (NOT DEFINED ${ep}_SOURCE_DIR)
-  set(location GIT_REPOSITORY ${url})
+  set(location GIT_REPOSITORY ${url} GIT_TAG itk-4)
 endif()
-
 
 ## #############################################################################
 ## Add specific cmake arguments for configuration step of the project
@@ -64,7 +63,6 @@ set(cmake_args
   -DQT_QMAKE_EXECUTABLE:PATH=${QT_QMAKE_EXECUTABLE}
   -Ddtk_DIR:FILEPATH=${dtk_DIR}
   -DITK_DIR:FILEPATH=${ITK_DIR}
-  -DVTK_DIR:FILEPATH=${VTK_DIR}
   -DRPI_DIR:FILEPATH=${RPI_DIR}
   -DmedInria_DIR:FILEPATH=${medInria_DIR}
   -DANIMA-MATHS_DIR:FILEPATH=${animaMath_DIR}

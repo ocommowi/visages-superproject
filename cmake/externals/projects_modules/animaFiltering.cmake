@@ -37,7 +37,7 @@ EP_SetDirectories(${ep}
 ## Define repository where get the sources
 ## #############################################################################
 
-set (url svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-filters/trunk)
+set (url svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-filters/branches/itk-4)
 if (NOT DEFINED ${ep}_SOURCE_DIR)
   set(location SVN_REPOSITORY ${url})
 endif()
@@ -61,7 +61,6 @@ set(cmake_args
   -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep}}
   -DBUILD_TOOLS:BOOL=OFF
   -DITK_DIR:FILEPATH=${ITK_DIR}
-  -DVTK_DIR:FILEPATH=${VTK_DIR}
   -DANIMA-MATHS_DIR:FILEPATH=${animaMath_DIR}
   )
 

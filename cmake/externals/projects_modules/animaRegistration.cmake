@@ -19,7 +19,7 @@ list(APPEND ${ep}_dependencies
 EP_Initialisation(${ep}  
   USE_SYSTEM OFF 
   BUILD_SHARED_LIBS OFF
-  REQUIERD_FOR_PLUGINS OFF
+  REQUIRED_FOR_PLUGINS OFF
   )
 
 
@@ -57,6 +57,7 @@ set(cmake_args
   ${ep_common_cache_args}
   -DCMAKE_C_FLAGS:STRING=${${ep}_c_flags}
   -DCMAKE_CXX_FLAGS:STRING=${${ep}_cxx_flags}  
+  -DCMAKE_SHARED_LINKER_FLAGS:STRING=${${ep}_shared_linker_flags}  
   -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
   -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep}}
   -DBUILD_TOOLS:BOOL=OFF

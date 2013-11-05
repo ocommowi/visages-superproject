@@ -1,4 +1,3 @@
-
 function(animaFiltering_project)
 
 set(ep animaFiltering)
@@ -19,7 +18,7 @@ list(APPEND ${ep}_dependencies
 EP_Initialisation(${ep}  
   USE_SYSTEM OFF 
   BUILD_SHARED_LIBS OFF
-  REQUIERD_FOR_PLUGINS OFF
+  REQUIRED_FOR_PLUGINS OFF
   )
 
 
@@ -61,7 +60,6 @@ set(cmake_args
   -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep}}
   -DBUILD_TOOLS:BOOL=OFF
   -DITK_DIR:FILEPATH=${ITK_DIR}
-  -DVTK_DIR:FILEPATH=${VTK_DIR}
   -DANIMA-MATHS_DIR:FILEPATH=${animaMath_DIR}
   )
 

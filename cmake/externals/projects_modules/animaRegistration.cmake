@@ -19,7 +19,7 @@ list(APPEND ${ep}_dependencies
 EP_Initialisation(${ep}  
   USE_SYSTEM OFF 
   BUILD_SHARED_LIBS OFF
-  REQUIERD_FOR_PLUGINS OFF
+  REQUIRED_FOR_PLUGINS OFF
   )
 
 

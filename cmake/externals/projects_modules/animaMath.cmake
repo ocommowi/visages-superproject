@@ -61,6 +61,7 @@ set(cmake_args
   -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep}}
   -DBUILD_TOOLS:BOOL=OFF
   -DITK_DIR:FILEPATH=${ITK_DIR}
+  -DBOOST_ROOT:PATH=${BOOST_ROOT}
   )
 
 ## #############################################################################

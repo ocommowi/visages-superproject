@@ -61,6 +61,7 @@ set(cmake_args
   -DBUILD_TOOLS:BOOL=OFF
   -DITK_DIR:FILEPATH=${ITK_DIR}
   -DANIMA-MATHS_DIR:FILEPATH=${animaMath_DIR}
+  -DBOOST_ROOT:PATH=${BOOST_ROOT}
   )
 
 ## #############################################################################

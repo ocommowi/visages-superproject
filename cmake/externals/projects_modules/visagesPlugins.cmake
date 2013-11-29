@@ -70,6 +70,7 @@ set(cmake_args
   -DANIMA-FILTERING_DIR:FILEPATH=${animaFiltering_DIR}
   -DANIMA-REGISTRATION_DIR:FILEPATH=${animaRegistration_DIR}
   -DQTSHANOIR_DIR:FILEPATH=${QtShanoir_DIR}
+  -DBOOST_ROOT:PATH=${BOOST_ROOT}
   )
 
 ## #############################################################################

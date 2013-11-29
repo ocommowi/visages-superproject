@@ -65,6 +65,7 @@ set(cmake_args
   -DITK_DIR:FILEPATH=${ITK_DIR}
   -DANIMA-MATHS_DIR:FILEPATH=${animaMath_DIR}
   -DANIMA-FILTERING_DIR:FILEPATH=${animaFiltering_DIR}
+  -DBOOST_ROOT:PATH=${BOOST_ROOT}
   )
 
 ## #############################################################################

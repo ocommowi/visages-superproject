@@ -7,9 +7,7 @@ set(ep visagesPlugins)
 ## #############################################################################
 
 list(APPEND ${ep}_dependencies 
-  animaMath
-  animaFiltering
-  animaRegistration
+  anima
   QtShanoir
   )
   
@@ -66,9 +64,7 @@ set(cmake_args
   -DITK_DIR:FILEPATH=${ITK_DIR}
   -DRPI_DIR:FILEPATH=${RPI_DIR}
   -DmedInria_DIR:FILEPATH=${medInria_DIR}
-  -DANIMA-MATHS_DIR:FILEPATH=${animaMath_DIR}
-  -DANIMA-FILTERING_DIR:FILEPATH=${animaFiltering_DIR}
-  -DANIMA-REGISTRATION_DIR:FILEPATH=${animaRegistration_DIR}
+  -DANIMA_DIR:FILEPATH=${anima_DIR}
   -DQTSHANOIR_DIR:FILEPATH=${QtShanoir_DIR}
   -DBOOST_ROOT:PATH=${BOOST_ROOT}
   )

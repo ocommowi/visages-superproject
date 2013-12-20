@@ -7,9 +7,7 @@ project(visages-superProject)
 ## #############################################################################
 
 list(APPEND external_projects  
-  animaMath 
-  animaFiltering 
-  animaRegistration
+  anima
   QtShanoir  
   visagesPlugins
   )
@@ -49,7 +47,7 @@ if("${GFORGE_USERNAME}" STREQUAL "")
     You must provide a valid username account in order to have ssh access to 
     gforge.inria.fr
     
-    This is required by Anima and Vistal.
+    This is required by Vistal.
     
     Please contact olivier.commowick@irisa.fr for more details")
 endif()

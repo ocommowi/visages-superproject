@@ -37,21 +37,6 @@ else()
     "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel.")
 endif()
 
-set(GFORGE_USERNAME "" CACHE STRING 
-  "Username of your gforge account used to run svn+ssh.")
-
-if("${GFORGE_USERNAME}" STREQUAL "")
-    message(WARNING 
-    "GFORGE_USERNAME is empty !
-    
-    You must provide a valid username account in order to have ssh access to 
-    gforge.inria.fr
-    
-    This is required by Vistal.
-    
-    Please contact olivier.commowick@irisa.fr for more details")
-endif()
-
 ## #############################################################################
 ## Add Targets
 ## #############################################################################

@@ -1,20 +1,20 @@
-function(animaRegistration_project)
+function(anima_project)
 
-set(ep animaRegistration)
+set(ep anima)
 
 ## #############################################################################
 ## List the dependencies of the project
 ## #############################################################################
 
 list(APPEND ${ep}_dependencies 
-  animaMath
-  animaFiltering
+  ""
   )
   
   
 ## #############################################################################
 ## Prepare the project
 ## ############################################################################# 
+
 
 EP_Initialisation(${ep}  
   USE_SYSTEM OFF 
@@ -37,9 +37,9 @@ EP_SetDirectories(${ep}
 ## Define repository where get the sources
 ## #############################################################################
 
-set(url svn+ssh://${GFORGE_USERNAME}@scm.gforge.inria.fr/svnroot/anima-reg/trunk)
+set(url ${GITHUB_PREFIX}Inria-Visages/Anima.git)
 if (NOT DEFINED ${ep}_SOURCE_DIR)
-  set(location SVN_REPOSITORY ${url})
+  set(location GIT_REPOSITORY ${url})
 endif()
 
 
@@ -60,11 +60,16 @@ set(cmake_args
   -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
   -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep}}
   -DBUILD_TOOLS:BOOL=OFF
+  -DBUILD_TESTING:BOOL=OFF
+  -DBUILD_ALL_MODULES:BOOL=OFF
+  -DBUILD_MODULE_MATHS:BOOL=ON
+  -DBUILD_MODULE_FILTERING:BOOL=ON
+  -DBUILD_MODULE_REGISTRATION:BOOL=ON
+  -DBUILD_MODULE_DIFFUSION:BOOL=OFF
+  -DBUILD_MODULE_SEGMENTATION:BOOL=OFF
   -DUSE_RPI:BOOL=ON
   -DRPI_DIR:FILEPATH=${RPI_DIR}
   -DITK_DIR:FILEPATH=${ITK_DIR}
-  -DANIMA-MATHS_DIR:FILEPATH=${animaMath_DIR}
-  -DANIMA-FILTERING_DIR:FILEPATH=${animaFiltering_DIR}
   -DBOOST_ROOT:PATH=${BOOST_ROOT}
   )
 

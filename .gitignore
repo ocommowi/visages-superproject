@@ -12,6 +12,9 @@
 *.la
 *.a
 
+# System stuff
+*DS_Store
+
 # CMake and make stuff 
 CMakeCache.txt
 CMakeFiles
@@ -25,7 +28,8 @@ build.ninja
 # externals src 
 visagesPlugins
 vistal
-qtShanoir
+QtShanoir
+anima
 animaMath
 animaRegistration
 animaFiltering

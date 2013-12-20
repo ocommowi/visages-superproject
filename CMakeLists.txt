@@ -7,9 +7,7 @@ project(visages-superProject)
 ## #############################################################################
 
 list(APPEND external_projects  
-  animaMath 
-  animaFiltering 
-  animaRegistration
+  anima
   QtShanoir  
   visagesPlugins
   )
@@ -37,21 +35,6 @@ else()
    
   set(CMAKE_BUILD_TYPE Release CACHE STRING
     "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel.")
-endif()
-
-set(GFORGE_USERNAME "" CACHE STRING 
-  "Username of your gforge account used to run svn+ssh.")
-
-if("${GFORGE_USERNAME}" STREQUAL "")
-    message(WARNING 
-    "GFORGE_USERNAME is empty !
-    
-    You must provide a valid username account in order to have ssh access to 
-    gforge.inria.fr
-    
-    This is required by Anima and Vistal.
-    
-    Please contact olivier.commowick@irisa.fr for more details")
 endif()
 
 ## #############################################################################

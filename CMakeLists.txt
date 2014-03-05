@@ -58,7 +58,7 @@ endforeach()
 ## Find medinria-superproject
 ## #############################################################################
 
-file(TO_CMAKE_PATH ${medInria-superProject_DIR} medInria-superProject_DIR)
+file(TO_CMAKE_PATH "${medInria-superProject_DIR}" medInria-superProject_DIR)
 find_package(medInria-superProject REQUIRED)
 
 

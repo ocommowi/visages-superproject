@@ -1,15 +1,6 @@
 function(QtShanoir_project)
 
 set(ep QtShanoir)
-
-## #############################################################################
-## List the dependencies of the project
-## #############################################################################
-
-list(APPEND ${ep}_dependencies 
-  ""
-  )
-  
   
 ## #############################################################################
 ## Prepare the project
@@ -70,18 +61,9 @@ ExternalProject_Add(${ep}
   ${location}
   CMAKE_GENERATOR ${gen}
   CMAKE_ARGS ${cmake_args}
-  DEPENDS ${${ep}_dependencies}
   INSTALL_COMMAND ""  
   UPDATE_COMMAND ""
   )
-
-
-## #############################################################################
-## Add custom targets
-## #############################################################################
-
-EP_AddCustomTargets(${ep})
-
 
 ## #############################################################################
 ## Set variable to provide infos about the project
@@ -89,6 +71,13 @@ EP_AddCustomTargets(${ep})
 
 ExternalProject_Get_Property(${ep} binary_dir)
 set(${ep}_DIR ${binary_dir} PARENT_SCOPE)
+
+
+## #############################################################################
+## Add custom targets
+## #############################################################################
+
+EP_AddCustomTargets(${ep})
 
 endif()
 

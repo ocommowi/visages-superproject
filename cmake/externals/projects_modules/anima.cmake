@@ -1,15 +1,6 @@
 function(anima_project)
 
 set(ep anima)
-
-## #############################################################################
-## List the dependencies of the project
-## #############################################################################
-
-list(APPEND ${ep}_dependencies 
-  ""
-  )
-  
   
 ## #############################################################################
 ## Prepare the project
@@ -67,6 +58,7 @@ set(cmake_args
   -DBUILD_MODULE_REGISTRATION:BOOL=ON
   -DBUILD_MODULE_DIFFUSION:BOOL=OFF
   -DBUILD_MODULE_SEGMENTATION:BOOL=OFF
+  -DBUILD_MODULE_QUANTITATIVE_MRI:BOOL=OFF
   -DUSE_RPI:BOOL=ON
   -DRPI_DIR:FILEPATH=${RPI_DIR}
   -DITK_DIR:FILEPATH=${ITK_DIR}
@@ -82,18 +74,9 @@ ExternalProject_Add(${ep}
   ${location}
   CMAKE_GENERATOR ${gen}
   CMAKE_ARGS ${cmake_args}
-  DEPENDS ${${ep}_dependencies}
   INSTALL_COMMAND ""  
   UPDATE_COMMAND ""
   )
-
-
-## #############################################################################
-## Add custom targets
-## #############################################################################
-
-EP_AddCustomTargets(${ep})
-
 
 ## #############################################################################
 ## Set variable to provide infos about the project
@@ -101,6 +84,13 @@ EP_AddCustomTargets(${ep})
 
 ExternalProject_Get_Property(${ep} binary_dir)
 set(${ep}_DIR ${binary_dir} PARENT_SCOPE)
+
+
+## #############################################################################
+## Add custom targets
+## #############################################################################
+
+EP_AddCustomTargets(${ep})
 
 endif()
 

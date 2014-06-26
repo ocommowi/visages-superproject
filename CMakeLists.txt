@@ -7,7 +7,7 @@ project(visages-superProject)
 ## #############################################################################
 
 list(APPEND external_projects  
-  anima
+  ANIMA
   QtShanoir  
   visagesPlugins
   )

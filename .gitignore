@@ -29,7 +29,5 @@ build.ninja
 visagesPlugins
 vistal
 QtShanoir
-anima
-animaMath
-animaRegistration
-animaFiltering
+ANIMA
+

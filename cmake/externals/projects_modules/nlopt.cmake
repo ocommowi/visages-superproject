@@ -18,42 +18,51 @@ if (NOT USE_SYSTEM_${ep})
 ## Set directories
 ## #############################################################################
 
-#EP_SetDirectories(${ep}
-#  EP_DIRECTORIES ep_dirs
-#  )
+EP_SetDirectories(${ep}
+  EP_DIRECTORIES ep_dirs
+  )
 
-set(dirs PREFIX ${ep})
-set(dirs ${dirs} DOWNLOAD_DIR "${ep}/")
-set(dirs ${dirs} STAMP_DIR "${ep}/stamp")
-set(dirs ${dirs} INSTALL_DIR "${ep}/install/${CMAKE_CFG_INTDIR}")
-set(dirs ${dirs} TMP_DIR "${ep}/tmp")
-set(dirs ${dirs} SOURCE_DIR ${CMAKE_SOURCE_DIR}/${ep})    
-
-if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${ep}/CMakeLists.txt 
-OR EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${ep}/configure)
-  set(${ep}_SOURCE_DIR SOURCE_DIR ${CMAKE_SOURCE_DIR}/${ep})    
-endif()
 
 ## #############################################################################
 ## Define repository where get the sources
 ## #############################################################################
 
-set(url http://ab-initio.mit.edu/nlopt/nlopt-2.4.2.tar.gz)
+set(url ${GITHUB_PREFIX}ocommowi/nlopt.git)
+set(tag "cmake-support")
 if (NOT DEFINED ${ep}_SOURCE_DIR)
-  set(location URL ${url} URL_MD5 "d0b8f139a4acf29b76dbae69ade8ac54")
+  set(location GIT_REPOSITORY ${url} GIT_TAG ${tag})
 endif()
+
+
+## #############################################################################
+## Add specific cmake arguments for configuration step of the project
+## #############################################################################
+
+# set compilation flags
+if (UNIX)
+  set(${ep}_c_flags "${${ep}_c_flags} -Wall")
+  set(${ep}_cxx_flags "${${ep}_cxx_flags} -Wall")
+endif()
+
+set(cmake_args
+  ${ep_common_cache_args}
+  -DCMAKE_C_FLAGS:STRING=${${ep}_c_flags}
+  -DCMAKE_CXX_FLAGS:STRING=${${ep}_cxx_flags}  
+  -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
+  -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep}}
+  )
 
 ## #############################################################################
 ## Add external-project
 ## #############################################################################
 
 ExternalProject_Add(${ep}
-  ${dirs}
+  ${ep_dirs}
   ${location}
-  CONFIGURE_COMMAND "./configure"
+  CMAKE_GENERATOR ${gen}
+  CMAKE_ARGS ${cmake_args}
   INSTALL_COMMAND ""  
   UPDATE_COMMAND ""
-  BUILD_IN_SOURCE 1
   )
 
 ## #############################################################################
@@ -62,6 +71,7 @@ ExternalProject_Add(${ep}
 
 ExternalProject_Get_Property(${ep} binary_dir)
 set(${ep}_DIR ${binary_dir} PARENT_SCOPE)
+set(${ep}_SRC_DIR ${source_dir} PARENT_SCOPE)
 
 
 ## #############################################################################

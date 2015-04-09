@@ -8,8 +8,9 @@ set(ep ANIMA)
 
 list(APPEND ${ep}_dependencies 
   TinyXML2
+  nlopt
   )
-  
+
 ## #############################################################################
 ## Prepare the project
 ## ############################################################################# 
@@ -69,6 +70,9 @@ set(cmake_args
   -DBUILD_MODULE_QUANTITATIVE_MRI:BOOL=ON
   -DTinyXML2_INCLUDE_DIR:PATH=${TinyXML2_SRC_DIR}
   -DTinyXML2_LIBRARY_DIR:PATH=${TinyXML2_DIR}
+  -DUSE_NLOPT=ON
+  -DNLOPT_INCLUDE_DIR=${nlopt_DIR}/api
+  -DNLOPT_LIBRARY_DIR=${nlopt_DIR}/.libs
   -DUSE_RPI:BOOL=ON
   -DRPI_DIR:FILEPATH=${RPI_DIR}
   -DITK_DIR:FILEPATH=${ITK_DIR}

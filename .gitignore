@@ -28,6 +28,7 @@ build.ninja
 # externals src 
 visagesPlugins
 vistal
+nlopt
 QtShanoir
 ANIMA
 TinyXML2

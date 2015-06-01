@@ -7,6 +7,7 @@ project(visages-superProject)
 ## #############################################################################
 
 list(APPEND external_projects  
+  TinyXML2
   ANIMA
   QtShanoir  
   visagesPlugins

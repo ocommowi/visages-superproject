@@ -8,6 +8,7 @@ project(visages-superProject)
 
 list(APPEND external_projects  
   TinyXML2
+  nlopt
   ANIMA
   QtShanoir  
   visagesPlugins

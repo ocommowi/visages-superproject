@@ -1,20 +1,10 @@
-function(ANIMA_project)
+function(nlopt_project)
 
-set(ep ANIMA)
-
-## #############################################################################
-## List the dependencies of the project
-## #############################################################################
-
-list(APPEND ${ep}_dependencies 
-  TinyXML2
-  nlopt
-  )
-
+set(ep nlopt)
+  
 ## #############################################################################
 ## Prepare the project
 ## ############################################################################# 
-
 
 EP_Initialisation(${ep}  
   USE_SYSTEM OFF 
@@ -37,9 +27,10 @@ EP_SetDirectories(${ep}
 ## Define repository where get the sources
 ## #############################################################################
 
-set(url ${GITHUB_PREFIX}Inria-Visages/Anima.git)
+set(url ${GITHUB_PREFIX}ocommowi/nlopt.git)
+set(tag "cmake-support")
 if (NOT DEFINED ${ep}_SOURCE_DIR)
-  set(location GIT_REPOSITORY ${url})
+  set(location GIT_REPOSITORY ${url} GIT_TAG ${tag})
 endif()
 
 
@@ -59,24 +50,6 @@ set(cmake_args
   -DCMAKE_CXX_FLAGS:STRING=${${ep}_cxx_flags}  
   -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
   -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep}}
-  -DBUILD_TOOLS:BOOL=OFF
-  -DBUILD_TESTING:BOOL=OFF
-  -DBUILD_ALL_MODULES:BOOL=OFF
-  -DBUILD_MODULE_MATHS:BOOL=ON
-  -DBUILD_MODULE_FILTERING:BOOL=ON
-  -DBUILD_MODULE_REGISTRATION:BOOL=ON
-  -DBUILD_MODULE_DIFFUSION:BOOL=OFF
-  -DBUILD_MODULE_SEGMENTATION:BOOL=OFF
-  -DBUILD_MODULE_QUANTITATIVE_MRI:BOOL=ON
-  -DTinyXML2_INCLUDE_DIR:PATH=${TinyXML2_SRC_DIR}
-  -DTinyXML2_LIBRARY_DIR:PATH=${TinyXML2_DIR}
-  -DUSE_NLOPT=ON
-  -DNLOPT_INCLUDE_DIR=${nlopt_SRC_DIR}/api
-  -DNLOPT_LIBRARY_DIR=${nlopt_DIR}
-  -DUSE_RPI:BOOL=ON
-  -DRPI_DIR:FILEPATH=${RPI_DIR}
-  -DITK_DIR:FILEPATH=${ITK_DIR}
-  -DBOOST_ROOT:PATH=${BOOST_ROOT}
   )
 
 ## #############################################################################
@@ -88,7 +61,6 @@ ExternalProject_Add(${ep}
   ${location}
   CMAKE_GENERATOR ${gen}
   CMAKE_ARGS ${cmake_args}
-  DEPENDS ${${ep}_dependencies}
   INSTALL_COMMAND ""  
   UPDATE_COMMAND ""
   )
@@ -99,6 +71,7 @@ ExternalProject_Add(${ep}
 
 ExternalProject_Get_Property(${ep} binary_dir)
 set(${ep}_DIR ${binary_dir} PARENT_SCOPE)
+set(${ep}_SRC_DIR ${source_dir} PARENT_SCOPE)
 
 
 ## #############################################################################

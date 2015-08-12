@@ -1,10 +1,19 @@
-function(TinyXML2_project)
+function(ANIMA_PUBLIC_project)
 
-set(ep TinyXML2)
-  
+set(ep ANIMA_PUBLIC)
+
+## #############################################################################
+## List the dependencies of the project
+## #############################################################################
+
+list(APPEND ${ep}_dependencies 
+  ""
+  )
+
 ## #############################################################################
 ## Prepare the project
 ## ############################################################################# 
+
 
 EP_Initialisation(${ep}  
   USE_SYSTEM OFF 
@@ -27,7 +36,7 @@ EP_SetDirectories(${ep}
 ## Define repository where get the sources
 ## #############################################################################
 
-set(url ${GITHUB_PREFIX}leethomason/tinyxml2.git)
+set(url ${GITHUB_PREFIX}Inria-Visages/Anima-Public.git)
 if (NOT DEFINED ${ep}_SOURCE_DIR)
   set(location GIT_REPOSITORY ${url})
 endif()
@@ -49,6 +58,22 @@ set(cmake_args
   -DCMAKE_CXX_FLAGS:STRING=${${ep}_cxx_flags}  
   -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
   -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS_${ep}}
+  -DBUILD_ANIMA_TOOLS:BOOL=OFF
+  -DBUILD_ANIMA_TESTING:BOOL=OFF
+  -DUSE_ANIMA_PRIVATE:BOOL=ON
+  -DUSE_GITHUB_SSH:BOOL=ON
+  -DUSE_NLOPT:BOOL=ON
+  -DUSE_RPI:BOOL=ON
+  -DUSE_VTK:BOOL=OFF
+  -DUSE_SYSTEM_BOOST:BOOL=ON
+  -DUSE_SYSTEM_ITK:BOOL=ON
+  -DUSE_SYSTEM_NLOPT:BOOL=OFF
+  -DUSE_SYSTEM_RPI:BOOL=ON
+  -DUSE_SYSTEM_TCLAP:BOOL=ON
+  -DUSE_SYSTEM_TinyXML2:BOOL=OFF
+  -DBOOST_ROOT:PATH=${BOOST_ROOT}
+  -DITK_DIR:FILEPATH=${ITK_DIR}
+  -DRPI_DIR:FILEPATH=${RPI_DIR}
   )
 
 ## #############################################################################
@@ -60,6 +85,7 @@ ExternalProject_Add(${ep}
   ${location}
   CMAKE_GENERATOR ${gen}
   CMAKE_ARGS ${cmake_args}
+  DEPENDS ${${ep}_dependencies}
   INSTALL_COMMAND ""  
   UPDATE_COMMAND ""
   )
@@ -70,7 +96,6 @@ ExternalProject_Add(${ep}
 
 ExternalProject_Get_Property(${ep} binary_dir)
 set(${ep}_DIR ${binary_dir} PARENT_SCOPE)
-set(${ep}_SRC_DIR ${source_dir} PARENT_SCOPE)
 
 
 ## #############################################################################

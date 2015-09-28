@@ -1,6 +1,6 @@
-function(ANIMA_PUBLIC_project)
+function(ANIMA_project)
 
-set(ep ANIMA_PUBLIC)
+set(ep ANIMA)
 
 ## #############################################################################
 ## List the dependencies of the project
@@ -95,8 +95,8 @@ ExternalProject_Add(${ep}
 ## #############################################################################
 
 ExternalProject_Get_Property(${ep} binary_dir)
-set(${ep}_DIR ${binary_dir} PARENT_SCOPE)
-
+set(${ep}_BUILD_DIR ${binary_dir}/Anima PARENT_SCOPE)
+set(${ep}_PRIVATE_DIR ${binary_dir}/Anima-Private PARENT_SCOPE)
 
 ## #############################################################################
 ## Add custom targets
@@ -104,6 +104,9 @@ set(${ep}_DIR ${binary_dir} PARENT_SCOPE)
 
 EP_AddCustomTargets(${ep})
 
+else()
+  set(${ep}_BUILD_DIR ${${ep}_DIR} PARENT_SCOPE)
+  set(${ep}_PRIVATE_DIR ${${ep}_DIR}/../Anima-Private PARENT_SCOPE)
 endif()
 
 endfunction()

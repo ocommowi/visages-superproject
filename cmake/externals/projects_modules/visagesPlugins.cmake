@@ -7,7 +7,7 @@ set(ep visagesPlugins)
 ## #############################################################################
 
 list(APPEND ${ep}_dependencies 
-  ANIMA_PUBLIC
+  ANIMA
   QtShanoir
   )
   
@@ -52,6 +52,8 @@ if (UNIX)
   set(${ep}_cxx_flags "${${ep}_cxx_flags} -Wall")
 endif()
 
+message("${ANIMA_BUILD_DIR} ${ANIMA_PRIVATE_DIR}")
+
 set(cmake_args
   ${ep_common_cache_args}
   -DCMAKE_C_FLAGS:STRING=${${ep}_c_flags}
@@ -65,8 +67,8 @@ set(cmake_args
   -DVTK_DIR:FILEPATH=${VTK_DIR}
   -DRPI_DIR:FILEPATH=${RPI_DIR}
   -DMEDINRIA_DIR:FILEPATH=${MEDINRIA_DIR}
-  -DANIMA_DIR:FILEPATH=${ANIMA_PUBLIC_DIR}/Anima
-  -DANIMA-PRIVATE_DIR:FILEPATH=${ANIMA_PUBLIC_DIR}/Anima-Private
+  -DANIMA_DIR:FILEPATH=${ANIMA_BUILD_DIR}
+  -DANIMA-PRIVATE_DIR:FILEPATH=${ANIMA_PRIVATE_DIR}
   -DQTSHANOIR_DIR:FILEPATH=${QtShanoir_DIR}
   -DBOOST_ROOT:PATH=${BOOST_ROOT}
   )

@@ -52,8 +52,6 @@ if (UNIX)
   set(${ep}_cxx_flags "${${ep}_cxx_flags} -Wall")
 endif()
 
-message("${ANIMA_BUILD_DIR} ${ANIMA_PRIVATE_DIR}")
-
 set(cmake_args
   ${ep_common_cache_args}
   -DCMAKE_C_FLAGS:STRING=${${ep}_c_flags}
